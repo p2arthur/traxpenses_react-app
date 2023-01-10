@@ -11,6 +11,7 @@ import {
   changeExpenseCost,
   changeExpenseCategory,
 } from "./slices/formSlice";
+
 const store = configureStore({
   reducer: {
     expenses: expensesReducer,

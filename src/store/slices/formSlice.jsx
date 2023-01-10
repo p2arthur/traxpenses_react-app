@@ -10,12 +10,12 @@ const formSlice = createSlice({
     },
 
     //This reducer will expect a dispatched payload containing the cost as a payload
-    changeExpenseCost() {
+    changeExpenseCost(state, action) {
       state.expenseCost = action.payload;
     },
 
     //This reducer will expect a dispatched payload containing the category as a payload
-    changeExpenseCategory() {
+    changeExpenseCategory(state, action) {
       state.expenseCategory = action.payload;
     },
   },
