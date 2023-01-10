@@ -24,9 +24,16 @@ const expensesSlice = createSlice({
       console.log(updated);
       state.expensesList = updated;
     },
+    deleteAllExpenses(state) {
+      state.expensesList = [];
+    },
   },
 });
 
-export const { changeSearchTerm, addExpense, deleteExpense } =
-  expensesSlice.actions;
+export const {
+  changeSearchTerm,
+  addExpense,
+  deleteExpense,
+  deleteAllExpenses,
+} = expensesSlice.actions;
 export const expensesReducer = expensesSlice.reducer;

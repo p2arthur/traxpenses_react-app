@@ -18,17 +18,24 @@ function ExpensesList() {
     dispatch(deleteExpense(expense));
   };
 
-  const renderedExpenses = expenses.map((expense) => {
+  const renderedExpenses = expenses.map((expense, index) => {
     console.log(name);
     const isBold =
       name && expense.name.toLowerCase().includes(name.toLowerCase());
     return (
-      <div key={expense.id}>
-        {isBold && "bold"}
+      <div
+        key={expense.id}
+        className={`flex  items-center justify-between p-3 px-7 ${
+          isBold && "font-bold"
+        } ${index % 2 == 0 ? "bg-gray-300" : "bg-gray-100"}`}
+      >
         <p>{expense.name}</p>
-        <p>{expense.cost}</p>
+        <p>R$ {expense.cost}</p>
         <p>{expense.category}</p>
-        <button onClick={() => handleDeleteExpense(expense.id)}>
+        <button
+          onClick={() => handleDeleteExpense(expense.id)}
+          className="border border-red-400 rounded text-red-400 p-1 hover:bg-red-400 hover:text-white transition-all"
+        >
           delete expense
         </button>
       </div>
