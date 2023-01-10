@@ -1,4 +1,4 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit/dist/createSlice";
+import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const expensesSlice = createSlice({
   name: "expenses",
@@ -10,14 +10,19 @@ const expensesSlice = createSlice({
 
     addExpense(state, action) {
       state.expensesList.push({
-        name: action.payload.expenseName,
-        cost: action.payload.expenseCost,
-        category: action.payload.expenseCategory,
+        name: action.payload.name,
+        cost: action.payload.cost,
+        category: action.payload.category,
         id: nanoid(),
       });
     },
     deleteExpense(state, action) {
-      state.expensesList.filter((expense) => expense.id !== action.payload);
+      console.log(state.expensesList);
+      const updated = state.expensesList.filter(
+        (expense) => expense.id !== action.payload
+      );
+      console.log(updated);
+      state.expensesList = updated;
     },
   },
 });
