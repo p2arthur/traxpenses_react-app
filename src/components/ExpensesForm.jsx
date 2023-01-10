@@ -15,7 +15,7 @@ function ExpensesForm() {
 
   const handleExpenseSubmit = (event) => {
     event.preventDefault();
-    console.log(expenseName);
+
     dispatch(
       addExpense({
         name: expenseName,

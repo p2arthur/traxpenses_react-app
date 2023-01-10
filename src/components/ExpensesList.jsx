@@ -2,13 +2,13 @@ import { useSelector, useDispatch } from "react-redux/es/exports";
 import { deleteExpense } from "../store";
 
 function ExpensesList() {
-  const { expenses } = useSelector(
-    ({ expenses: { expensesList, searchTerm } }, form) => {
+  const { expenses, name } = useSelector(
+    ({ expenses: { expensesList, searchTerm }, form }) => {
       const filteredExpenses = expensesList.filter((expense) =>
         expense.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
 
-      return { expenses: filteredExpenses };
+      return { expenses: filteredExpenses, name: form.expenseName };
     }
   );
 
@@ -18,16 +18,22 @@ function ExpensesList() {
     dispatch(deleteExpense(expense));
   };
 
-  const renderedExpenses = expenses.map((expense) => (
-    <div key={expense.id}>
-      <p>{expense.name}</p>
-      <p>{expense.cost}</p>
-      <p>{expense.category}</p>
-      <button onClick={() => handleDeleteExpense(expense.id)}>
-        delete expense
-      </button>
-    </div>
-  ));
+  const renderedExpenses = expenses.map((expense) => {
+    console.log(name);
+    const isBold =
+      name && expense.name.toLowerCase().includes(name.toLowerCase());
+    return (
+      <div key={expense.id}>
+        {isBold && "bold"}
+        <p>{expense.name}</p>
+        <p>{expense.cost}</p>
+        <p>{expense.category}</p>
+        <button onClick={() => handleDeleteExpense(expense.id)}>
+          delete expense
+        </button>
+      </div>
+    );
+  });
 
   return <div>{renderedExpenses}</div>;
 }
