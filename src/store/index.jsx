@@ -4,6 +4,7 @@ import {
   addExpense,
   deleteExpense,
   changeSearchTerm,
+  deleteAllExpenses,
 } from "./slices/expensesSlice";
 import {
   formReducer,
@@ -24,6 +25,7 @@ export {
   changeSearchTerm,
   addExpense,
   deleteExpense,
+  deleteAllExpenses,
   changeExpenseName,
   changeExpenseCost,
   changeExpenseCategory,

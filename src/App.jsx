@@ -6,10 +6,15 @@ import ExpensesSearch from "./components/ExpensesSearch";
 function App() {
   return (
     <div>
-      <ExpensesForm />
-      <ExpensesSearch />
-      <ExpensesList />
-      <ExpensesTotal />
+      <h1 className="text-3xl text-white bg-black flex justify-center items-center h-20">
+        Traxpenses
+      </h1>
+      <div className="m-10">
+        <ExpensesForm />
+        <ExpensesSearch />
+        <ExpensesList />
+        <ExpensesTotal />
+      </div>
     </div>
   );
 }
